@@ -49,7 +49,7 @@ body {
 
 .hero-wrapper {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -228,6 +228,54 @@ body {
   text-align: justify;
   padding: var(--space-xs);
 }
+
+/* Section 3 - Minhas habilidades */
+
+.section-skills {
+  height: 100dvh;
+}
+
+.hard-skills {
+  padding-block: var(--space-2xl);
+}
+
+.hard-skills h2 {
+  margin-bottom: var(--space-xl);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  text-align: center;
+}
+
+.iMake {
+  background-color: #00132c;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 12px;
+  border: #003a86 1px solid;
+}
+
+.iMake h3 {
+  margin-bottom: var(--space-xl);
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+.skills .skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.skills .skill img {
+  width: var(--space-2xl);  
+}
+
+/* =============================================== */
 
 /* Tablets */
 @media (max-width: 768px) {
