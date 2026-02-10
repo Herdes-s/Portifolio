@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-main-bg: #111;
+  --color-secondary-bg: #003a86;
+
+  --text-color-main: #eee;
+  --text-color-secondary: #88bbff;
+
+  --text-color-hover: #a1caff;
+  --text-color-active: #68a9ff;
+
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 62px;
+}
+
+body {
+  background: var(--color-main-bg);
+  color: var(--text-color-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.container {
+  padding: var(--space-sm) var(--space-lg);
+}
+
+/* Topo da tela */
+
+.hero-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.section-hero {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color-secondary-bg);
+}
+
+.header img {
+  max-width: 50px;
+}
+
+.header img:hover {
+  box-shadow: 0 0 10px #222;
+  transform: scale(0.95);
+  cursor: pointer;
+}
+
+.header ul {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+.header ul li a {
+  color: var(--text-color-secondary);
+  text-decoration: none;
+  position: relative;
+}
+
+.header ul li a:hover {
+  color: var(--text-color-hover);
+}
+
+.header ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 2px;
+  width: 0%;
+  background-color: var(--text-color-secondary);
+  transition: 0.2s;
+}
+
+.header ul li a:hover::after {
+  width: 100%;
+}
+
+.header ul li a:active {
+  color: var(--text-color-active);
+}
+
+/* Hero */
+
+.overlay {
+  position: absolute;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 58, 134, 0.2),
+    rgba(17, 17, 17, 0.2)
+  );
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 120px;
+  z-index: 2;
+}
+
+.hero-title {
+  position: relative;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(to 0, rgb(34, 34, 34), rgb(34, 34, 49));
+  border-radius: 12px;
+  border-left: 8px solid var(--color-secondary-bg);
+  padding: 24px;
+  box-shadow: 2px 2px 5px #0c0c0c;
+
+  transition: border 0.2s ease, transform 0.5s ease;
+}
+
+.hero-title::after {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  width: 90%;
+  height: 5px;
+  background: rgba(12, 12, 12, 0.8);
+  border-radius: 100%;
+  box-shadow: 0 0 10px 10px rgba(12, 12, 12, 0.5);
+}
+
+.hero-title:hover {
+  border-left: 12px solid var(--color-secondary-bg);
+  transform: translateX(10px);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--space-sm);
+  color: var(--text-color-secondary);
+  text-shadow: 2px 2px 5px #003a86;
+}
+
+.hero h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hero img {
+  width: 50%;
+  border: solid 1px var(--color-secondary-bg);
+  border-radius: 100%;
+  background-color: var(--color-secondary-bg);
+  box-shadow: 0 0 20px 5px var(--color-secondary-bg);
+}
+
+/* Section 2 - Sobre mim */
+
+.section-about {
+  padding: var(--space-xl) 0;
+}
+
+.about-text h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.about-text p {
+  max-width: 60vw;
+  margin-inline: auto;
+  text-align: justify;
+  padding: var(--space-xs);
+}
+
+@media (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .header ul {
+    padding-top: var(--space-md);
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 48px;
+  }
+
+}
+
+@media (hover: hover) {
+  .hero-title:hover {
+    transform: translateX(6px);
+  }
+}
