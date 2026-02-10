@@ -19,13 +19,26 @@
   --space-md: 24px;
   --space-lg: 48px;
   --space-xl: 62px;
+  --space-2xl: 80px;
 }
 
 body {
   background: var(--color-main-bg);
   color: var(--text-color-main);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+
+  overflow-x: hidden;
 }
 
 .container {
@@ -47,11 +60,22 @@ body {
 
 .header {
   position: relative;
-  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--color-secondary-bg);
+  z-index: 10;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger img {
+  width: 20px;
 }
 
 .header img {
@@ -64,23 +88,23 @@ body {
   cursor: pointer;
 }
 
-.header ul {
+.header .nav-list {
   display: flex;
   gap: var(--space-lg);
   list-style: none;
 }
 
-.header ul li a {
+.header .nav-list li a {
   color: var(--text-color-secondary);
   text-decoration: none;
   position: relative;
 }
 
-.header ul li a:hover {
+.header .nav-list li a:hover {
   color: var(--text-color-hover);
 }
 
-.header ul li a::after {
+.header .nav-list li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -91,11 +115,11 @@ body {
   transition: 0.2s;
 }
 
-.header ul li a:hover::after {
+.header .nav-list li a:hover::after {
   width: 100%;
 }
 
-.header ul li a:active {
+.header .nav-listl li a:active {
   color: var(--text-color-active);
 }
 
@@ -118,7 +142,7 @@ body {
   flex-direction: row;
   width: 100%;
   margin-top: 120px;
-  z-index: 2;
+  z-index: 5;
 }
 
 .hero-title {
@@ -133,7 +157,9 @@ body {
   padding: 24px;
   box-shadow: 2px 2px 5px #0c0c0c;
 
-  transition: border 0.2s ease, transform 0.5s ease;
+  transition:
+    border 0.2s ease,
+    transform 0.5s ease;
 }
 
 .hero-title::after {
@@ -197,20 +223,20 @@ body {
 }
 
 .about-text p {
-  max-width: 60vw;
+  max-width: 60%;
   margin-inline: auto;
   text-align: justify;
   padding: var(--space-xs);
 }
 
+/* Tablets */
 @media (max-width: 768px) {
   .header {
     display: flex;
-    flex-direction: column;
     gap: 48px;
   }
 
-  .header ul {
+  .header .nav-list {
     padding-top: var(--space-md);
   }
 
@@ -220,10 +246,56 @@ body {
     gap: 48px;
   }
 
+  .about-text p {
+    max-width: 80%;
+  }
+
+  /* hamburger */
+  .hamburger {
+    position: relative;
+    z-index: 1000;
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    background: #00132c;
+    box-shadow: inset 0 0 100px #003a8683;
+    transition: right 0.3s ease;
+    padding-top: var(--space-2xl);
+    z-index: 999;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-left: var(--space-md);
+  }
 }
 
-@media (hover: hover) {
-  .hero-title:hover {
-    transform: translateX(6px);
+/* Celulares grandes */
+@media (max-width: 425px) {
+  .container {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .about-text p {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    padding: var(--space-sm);
   }
 }
