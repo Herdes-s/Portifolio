@@ -272,13 +272,17 @@ body {
 }
 
 .skills .skill img {
-  width: var(--space-2xl);  
+  width: var(--space-2xl);
 }
 
 /* =============================================== */
 
 /* Tablets */
 @media (max-width: 768px) {
+  .hero-wrapper {
+    min-height: 0;
+  }
+
   .header {
     display: flex;
     gap: 48px;
